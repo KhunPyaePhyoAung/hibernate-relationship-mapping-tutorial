@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="me.khun.hibernate.entity.Tag" table="tag">
+        <id name="id">
+            <generator class="identity"></generator>
+        </id>
+        <property name="name"></property>
+        <bag name="posts" fetch="select" table="post_tag">
+            <key column="tag_id"></key>
+            <many-to-many class="me.khun.hibernate.entity.Post" column="post_id"></many-to-many>
+        </bag>
+    </class>
+</hibernate-mapping>
